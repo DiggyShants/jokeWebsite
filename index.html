@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Joke Website</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+    padding-top: 50px;
+  }
+  #joke-container {
+    background-color: #fff;
+    margin: auto;
+    width: 50%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  #punchline {
+    display: none;
+    margin-top: 20px;
+    font-style: italic;
+  }
+</style>
+</head>
+<body>
+
+<div id="joke-container">
+  <h1>My Joke Website</h1>
+  <div id="joke">
+    <p id="setup">Why did the chicken cross the road?</p>
+    <p id="punchline"></p>
+    <button onclick="showPunchline()">Punchline</button>
+    <button onclick="newJoke()">New Joke</button>
+  </div>
+</div>
+
+<script>
+  let jokes = [
+    { setup: "Why did the chicken cross the road?", punchline: "To get to the other side!" },
+    { setup: "What do you call fake spaghetti?", punchline: "An impasta!" },
+    { setup: "Why don't skeletons fight each other?", punchline: "They don't have the guts." },
+    // Add as many jokes as you want
+  ];
+
+  function showPunchline() {
+    document.getElementById('punchline').style.display = 'block';
+  }
+
+  function newJoke() {
+    let jokeIndex = Math.floor(Math.random() * jokes.length);
+    document.getElementById('setup').textContent = jokes[jokeIndex].setup;
+    document.getElementById('punchline').textContent = jokes[jokeIndex].punchline;
+    document.getElementById('punchline').style.display = 'none'; // Hide the punchline until the button is clicked
+  }
+
+  // Initialize with the first joke
+  newJoke();
+</script>
+
+</body>
+</html>
